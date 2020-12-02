@@ -6,16 +6,16 @@ defaults: &defaults
 
 aliases:
   - &restore_npm_cache
-    restore_cache:
-      name: Restore node_modules Cache
-      keys:
-        - v1-node-{{ .Branch }}-{{ checksum "package-lock.json" }}
+      restore_cache:
+        name: Restore node_modules Cache
+        keys:
+          - v1-node-{{ .Branch }}-{{ checksum "package-lock.json" }}
   - &setup_and_build
-     run:
-      name: Setup and Build
-      command: |
-         npm install
-         npm run build
+      run:
+        name: Setup and Build
+        command: |
+          npm install
+          npm run build
 
 jobs:
   TheTest:
