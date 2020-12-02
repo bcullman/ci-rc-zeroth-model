@@ -25,25 +25,30 @@ jobs:
       - *restore_npm_cache
       - *setup_and_build
       - run: npm run test
-  #TheDeployRC:
-   # <<: *defaults
-    #steps:
-       #- checkout
-       #- *restore_npm_cache
-       #- *setup_and_build
-       #- *restore_npm_cache
-       #- *setup_and_build
-       #- run:
-       #   command: |
-       #    set -o errexit
-       #    git config --global user.email "CircleCI@github.com"
-       #    git config --global user.name "CircleCI"
-       #    npm run std-version -- --prerelease rc --no-verify
-       #    git push --follow-tags origin ${CIRCLE_BRANCH}
-       #    npm publish --tag prerelease
+  TheDeployRC:
+    <<: *defaults
+    steps:
+      - checkout
+      - *restore_npm_cache
+      - *setup_and_build
+      - run:
+          command: |
+            set -o errexit
+            git config --global user.email "CircleCI@github.com"
+            git config --global user.name "CircleCI"
+            npm run std-version -- --prerelease rc --no-verify
+            git push --follow-tags origin ${CIRCLE_BRANCH}
+            npm publish --tag prerelease
 
 workflows:
   version: 2
   TheSetupAndTest:
     jobs:
       - TheTest
+      - deploy-rc:
+           requires:
+            - TheTest
+           filters:
+             branches:
+                 only: /(^master$)/
+
