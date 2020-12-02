@@ -14,8 +14,8 @@ aliases:
       run:
         name: Setup and Build
         command: |
-          npm install
-          npm run build
+            npm install
+            npm run build
 
 jobs:
   TheTest:
