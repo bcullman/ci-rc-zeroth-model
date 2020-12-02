@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file. See [standa
 ### [0.0.1-rc.3](https://github.com/bcullman/ci-rc-model/compare/v0.0.1-rc.2...v0.0.1-rc.3) (2020-12-02)
 
 
-### Features
+### Bug Fixes
 
 * update permission ([#7](https://github.com/bcullman/ci-rc-model/issues/7)) ([a093c15](https://github.com/bcullman/ci-rc-model/commit/a093c159ba0e75c7b2855c78bc8b31d8fff1e80f))
 
@@ -19,7 +19,7 @@ All notable changes to this project will be documented in this file. See [standa
 ### [0.0.1-rc.1](https://github.com/bcullman/ci-rc-model/compare/v0.0.1-rc.0...v0.0.1-rc.1) (2020-12-02)
 
 
-### Bug Fixes
+### Features
 
 * add release script ([#5](https://github.com/bcullman/ci-rc-model/issues/5)) ([3e1a8cf](https://github.com/bcullman/ci-rc-model/commit/3e1a8cf5d946480734305a34f6228338c8019ab6))
 
