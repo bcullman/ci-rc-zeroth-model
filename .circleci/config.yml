@@ -4,11 +4,18 @@ executors:
   exe_nodejs:
     docker:
       - image: circleci/node:14.15-browsers
+    working_directory: ~/repo
 
 jobs:
   TheSetup:
+    executor: exe_nodejs
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
       - run: | 
           echo "npm install"
           npm install
@@ -16,16 +23,22 @@ jobs:
           root: .
           paths: .
   TheTest:
+    executor: exe_nodejs
     steps:
+      - attach_workspace:
+          at: ~/repo
       - run:
           name: Run unit tests
           command: npm run test
 
+# Orchestrate or schedule a set of jobs
 workflows:
   version: 2
+  # Name the workflow
   Name-RunTests:
+    # Run the welcome/run job in its own container
     jobs:
       - TheSetup
-      - TheTest:
+      - TheTest
           requires:
             - TheSetup
