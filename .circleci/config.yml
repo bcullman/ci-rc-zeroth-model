@@ -22,15 +22,15 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      *restore_npm_cache
-      *setup_and_build
+      - *restore_npm_cache
+      - *setup_and_build
       run: npm run test
   TheDeployRC:
     <<: *defaults
     steps:
        #- checkout
-       #*restore_npm_cache
-       #*setup_and_build
+       #- *restore_npm_cache
+       #- *setup_and_build
        #- *restore_npm_cache
        #- *setup_and_build
        #- run:
