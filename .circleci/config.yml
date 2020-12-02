@@ -10,7 +10,9 @@ jobs:
     executor: exe_nodejs
     steps:
       - checkout
-      - run: npm install
+      - run: | 
+          echo "npm install"
+          npm install
   test:
     executor: exe_nodejs
     steps:
@@ -26,4 +28,3 @@ workflows:
     # Run the welcome/run job in its own container
     jobs:
       - setup
-      - test
