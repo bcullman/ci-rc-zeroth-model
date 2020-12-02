@@ -13,7 +13,7 @@ jobs:
       - run: | 
           echo "npm install"
           npm install
-  test:
+  TheTest:
     executor: exe_nodejs
     steps:
       - run:
@@ -28,3 +28,4 @@ workflows:
     # Run the welcome/run job in its own container
     jobs:
       - TheSetup
+      - TheTest
