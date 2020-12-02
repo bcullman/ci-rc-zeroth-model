@@ -4,13 +4,43 @@ defaults: &defaults
   docker:
     - image: circleci/node:14.15-browsers
 
+aliases:
+  - &restore_npm_cache
+    restore_cache:
+      name: Restore node_modules Cache
+      keys:
+        - v1-node-{{ .Branch }}-{{ checksum "package-lock.json" }}
+  - &setup_and_build
+     run:
+      name: Setup and Build
+      command: |
+         npm install
+         npm run build
+
 jobs:
   TheTest:
     <<: *defaults
     steps:
       - checkout
-      - run: npm install
-      - run: npm run test
+      *restore_npm_cache
+      *setup_and_build
+      run: npm run test
+  TheDeployRC:
+    <<: *defaults
+    steps:
+       #- checkout
+       #*restore_npm_cache
+       #*setup_and_build
+       #- *restore_npm_cache
+       #- *setup_and_build
+       #- run:
+       #   command: |
+       #    set -o errexit
+       #    git config --global user.email "CircleCI@github.com"
+       #    git config --global user.name "CircleCI"
+       #    npm run std-version -- --prerelease rc --no-verify
+       #    git push --follow-tags origin ${CIRCLE_BRANCH}
+       #    npm publish --tag prerelease
 
 workflows:
   version: 2

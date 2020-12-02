@@ -4,8 +4,10 @@
   "description": "Demo CircleCI strategies",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
-  },
+    "build": "echo \"Error: no build specified\" && exit 0",
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "std-version": "standard-version --releaseCommitMessageFormat \"chore(release): version {{currentTag}} build ${CIRCLE_BUILD_NUM} [ci skip]\"",
+ },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bcullman/ci-rc-model.git"
@@ -15,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/bcullman/ci-rc-model/issues"
   },
-  "homepage": "https://github.com/bcullman/ci-rc-model#readme"
+  "homepage": "https://github.com/bcullman/ci-rc-model#readme",
+  "dependencies": {
+    "standard-version": "^9.0.0"
+  }
 }
