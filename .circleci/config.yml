@@ -10,6 +10,7 @@ jobs:
   TheSetup:
     executor: exe_nodejs
     steps:
+      - checkout
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
