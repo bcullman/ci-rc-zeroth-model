@@ -16,8 +16,6 @@ jobs:
   TheTest:
     <<: *defaults
     steps:
-      - attach_workspace:
-          at: ~/project
       - run: npm run test
 
 workflows:
