@@ -18,8 +18,6 @@ jobs:
   TheTest:
     executor: exe_nodejs
     steps:
-      - attach_workspace:
-          at: ~/repo
       - run: npm run test
 
 workflows:
