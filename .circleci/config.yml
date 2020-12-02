@@ -11,8 +11,7 @@ jobs:
     executor: exe_nodejs
     steps:
       - checkout
-      - run:
-          command: npm install
+      - run: npm install
       - persist_to_workspace:
           root: .
           paths: .
@@ -21,8 +20,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-      - run:
-          command: npm run test
+      - run: npm run test
 
 workflows:
   version: 2
