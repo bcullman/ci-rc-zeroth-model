@@ -23,7 +23,7 @@ jobs:
 
 workflows:
   version: 2
-  Name-RunTests:
+  TheSetupAndTest:
     jobs:
       - TheSetup
       - TheTest:
