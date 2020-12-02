@@ -42,7 +42,7 @@ jobs:
 
 workflows:
   version: 2
-  TheSetupAndTest:
+  TheWorkflows:
     jobs:
       - TheTest
       - TheDeployRC:
