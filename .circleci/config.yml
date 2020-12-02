@@ -4,7 +4,6 @@ executors:
   exe_nodejs:
     docker:
       - image: circleci/node:14.15-browsers
-    working_directory: ~/repo
 
 jobs:
   TheSetup:
@@ -25,8 +24,6 @@ jobs:
   TheTest:
     executor: exe_nodejs
     steps:
-      - attach_workspace:
-          at: ~/repo
       - run:
           name: Run unit tests
           command: npm run test
