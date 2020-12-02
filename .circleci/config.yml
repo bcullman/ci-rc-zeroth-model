@@ -15,8 +15,8 @@ jobs:
     executor: exe_nodejs
     steps:
       - run:
-        name: Run unit tests
-        command: npm run test
+          name: Run unit tests
+          command: npm run test
 
 # Orchestrate or schedule a set of jobs
 workflows:
