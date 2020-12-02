@@ -4,6 +4,7 @@ executors:
   exe_nodejs:
     docker:
       - image: circleci/node:14.15-browsers
+    working_directory: ~/project
 
 jobs:
   TheSetup:
