@@ -1,14 +1,13 @@
 version: 2.1
 
-executors:
-  exe_nodejs:
-    docker:
-      - image: circleci/node:14.15-browsers
-    working_directory: ~/repo
+defaults: &defaults
+  docker:
+    - image: circleci/node:14.15-browsers
+  working_directory: ~/repo
 
 jobs:
   TheSetup:
-    executor: exe_nodejs
+    <<: *defaults
     steps:
       - checkout
       - run: npm install
@@ -16,7 +15,7 @@ jobs:
           root: .
           paths: .
   TheTest:
-    executor: exe_nodejs
+    <<: *defaults
     steps:
       - attach_workspace:
           at: ~/repo
