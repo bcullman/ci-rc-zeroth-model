@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "echo \"Error: no build specified\" && exit 0",
-    "test": "echo \"Error: no test specified\" && exit 0",
+    "release:create": "create-release",
+    "release": "./.circleci/publish_release.sh",
     "std-version": "standard-version --releaseCommitMessageFormat \"chore(release): version {{currentTag}} build ${CIRCLE_BUILD_NUM} [ci skip]\"",
-    "release": "./.circleci/publish_release.sh"
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
     "type": "git",
