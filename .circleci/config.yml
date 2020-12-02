@@ -16,4 +16,4 @@ workflows:
   version: 2
   TheSetupAndTest:
     jobs:
-      - TheTest:
+      - TheTest
