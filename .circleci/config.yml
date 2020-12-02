@@ -8,17 +8,21 @@ executors:
 
 jobs:
   TheSetup:
+    executor: exe_nodejs
     steps:
       - checkout
-      - run: npm install
+      - run:
+          command: npm install
       - persist_to_workspace:
           root: .
           paths: .
   TheTest:
+    executor: exe_nodejs
     steps:
       - attach_workspace:
           at: ~/repo
-      - run: npm run test
+      - run:
+          command: npm run test
 
 workflows:
   version: 2
