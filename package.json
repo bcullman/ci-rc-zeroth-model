@@ -6,7 +6,8 @@
   "scripts": {
     "build": "echo \"Error: no build specified\" && exit 0",
     "test": "echo \"Error: no test specified\" && exit 0",
-    "std-version": "standard-version --releaseCommitMessageFormat \"chore(release): version {{currentTag}} build ${CIRCLE_BUILD_NUM} [ci skip]\""
+    "std-version": "standard-version --releaseCommitMessageFormat \"chore(release): version {{currentTag}} build ${CIRCLE_BUILD_NUM} [ci skip]\"",
+    "release": "./.circleci/publish_release.sh"
   },
   "repository": {
     "type": "git",

@@ -16,6 +16,13 @@ aliases:
         command: |
             npm install
             npm run build
+  - &git_config
+      run:
+        name: Setup and Build
+        command: |
+            set -o errexit
+            git config --global user.email "CircleCI@github.com"
+            git config --global user.name "CircleCI"
 
 jobs:
   TheTest:
@@ -31,14 +38,32 @@ jobs:
       - checkout
       - *restore_npm_cache
       - *setup_and_build
+      - *git_config
       - run:
           command: |
-            set -o errexit
-            git config --global user.email "CircleCI@github.com"
-            git config --global user.name "CircleCI"
             npm run std-version -- --prerelease rc --no-verify
             git push --follow-tags origin ${CIRCLE_BRANCH}
             npm publish --tag prerelease
+  TheDeploy:
+    <<: *defaults
+    steps:
+      - checkout
+      - *restore_npm_cache
+      - *setup_and_build
+      - *git_config
+      - run:
+          command: |
+            release_branch=$(echo $CIRCLE_BRANCH | grep -oE "__.*" | sed 's/^__\(.*\)/\1/')
+            git checkout -- .
+            git checkout $release_branch
+            git checkout -- .
+            git pull
+            git push origin :$CIRCLE_BRANCH
+            std_ver=$(npm run std-version)
+            release_tag=$(echo "$std_ver" | grep "tagging release" | awk '{print $4}')
+            echo "$std_ver"
+            git push --follow-tags origin $release_branch
+            npm run release:create -- --repo "$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME" --tag $release_tag --branch $release_branch --gh-api-base-url "https://github.concur.com/api/v3"
 
 workflows:
   version: 2
@@ -51,4 +76,11 @@ workflows:
            filters:
              branches:
                  only: /(^master$)/
+      - TheDeploy:
+           requires:
+            - TheTest
+           filters:
+             branches:
+                 only: /do_not_use_release_branch.*/
+
 
