@@ -10,22 +10,11 @@ jobs:
     executor: exe_nodejs
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-      - run: | 
-          echo "npm install"
-          npm install
-      - persist_to_workspace:
-          root: .
-          paths: .
+      - run: npm install
   TheTest:
     executor: exe_nodejs
     steps:
       - run:
-          name: Run unit tests
           command: npm run test
 
 # Orchestrate or schedule a set of jobs
