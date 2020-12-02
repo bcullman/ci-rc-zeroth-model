@@ -6,7 +6,7 @@ executors:
       - image: circleci/node:14.15-browsers
 
 jobs:
-  setup:
+  TheSetup:
     executor: exe_nodejs
     steps:
       - checkout
@@ -27,4 +27,4 @@ workflows:
   Name-RunTests:
     # Run the welcome/run job in its own container
     jobs:
-      - setup
+      - TheSetup
