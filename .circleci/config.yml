@@ -5,24 +5,15 @@ defaults: &defaults
     - image: circleci/node:14.15-browsers
 
 jobs:
-  TheSetup:
+  TheTest:
     <<: *defaults
     steps:
       - checkout
       - run: npm install
-      - persist_to_workspace:
-          root: .
-          paths: .
-  TheTest:
-    <<: *defaults
-    steps:
       - run: npm run test
 
 workflows:
   version: 2
   TheSetupAndTest:
     jobs:
-      - TheSetup
       - TheTest:
-          requires:
-            - TheSetup
