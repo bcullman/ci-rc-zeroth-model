@@ -63,7 +63,7 @@ jobs:
             release_tag=$(echo "$std_ver" | grep "tagging release" | awk '{print $4}')
             echo "$std_ver"
             git push --follow-tags origin $release_branch
-            npm run release:create -- --repo "$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME" --tag $release_tag --branch $release_branch --gh-api-base-url "https://github.concur.com/api/v3"
+         #   npm run release:create -- --repo "$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME" --tag $release_tag --branch $release_branch --gh-api-base-url "https://github.concur.com/api/v3"
 
 workflows:
   version: 2
