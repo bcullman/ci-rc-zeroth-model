@@ -1,4 +1,4 @@
-# Demo Standard Version, RC Model (0th-based repo)
+# Demo Standard Version, RC Model (pre 1.0-based repo)
 
 [![bcullman](https://circleci.com/gh/bcullman/ci-rc-zeroth-model.svg?style=svg)](https://app.circleci.com/pipelines/github/bcullman/ci-rc-zeroth-model)
 
@@ -6,7 +6,7 @@ This repo is set up to demo standard version
 
 See: https://github.com/conventional-changelog/standard-version
 
-It is also set up to demo pre 1.0 based semVer handling, meaning breaking changes are reflected by an increase in the minor version, while features, fixes, chores and docs are *ALL* represented by the patch version. (major.minor.patch).
+It is also set up to demo pre 1.0-based semVer handling, meaning breaking changes are reflected by an increase in the minor version, while features, fixes, chores and docs are *ALL* represented by the patch version. (major.minor.patch).
 
 On each merge to master, CI kicks off one addition [CI SKIP] event that does the following:
 
