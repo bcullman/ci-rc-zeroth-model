@@ -1,5 +1,5 @@
 {
-  "name": "ci-rc-model",
+  "name": "ci-rc-model-pre1.0",
   "version": "0.2.2-rc.1",
   "description": "Demo CircleCI strategies",
   "main": "index.js",
@@ -12,14 +12,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bcullman/ci-rc-model.git"
+    "url": "git+https://github.com/bcullman/ci-rc-model-pre1.0.git"
   },
   "author": "brad@ullman.com",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/bcullman/ci-rc-model/issues"
-  },
-  "homepage": "https://github.com/bcullman/ci-rc-model#readme",
+  "homepage": "https://github.com/bcullman/ci-rc-model-pre1.0#readme",
   "dependencies": {
     "standard-version": "^9.0.0"
   }
