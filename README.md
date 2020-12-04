@@ -1,5 +1,7 @@
 # Demo Standard Version, RC Model (0th-based repo)
 
+[![bcullman](https://circleci.com/gh/bcullman/ci-rc-zeroth-model.svg?style=svg)](https://app.circleci.com/pipelines/github/bcullman/ci-rc-zeroth-model)
+
 This repo is set up to demo standard version
 
 See: https://github.com/conventional-changelog/standard-version
